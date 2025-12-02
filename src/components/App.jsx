@@ -11,15 +11,16 @@ function App() {
 
   // useEffect
 
-  let urlHouses;
-if (urlHouses === "todas") {
+
+
+
+  useEffect(() => {
+      let urlHouses;
+if (searchHouses === "todas") {
   urlHouses = "https://hp-api.onrender.com/api/characters/"
 } else {
   urlHouses = `https://hp-api.onrender.com/api/characters/house/${searchHouses}`
 }
-
-
-  useEffect(() => {
     fetch(urlHouses)
       .then((response) => response.json())
       .then((characters) => {
@@ -47,7 +48,19 @@ if (urlHouses === "todas") {
     setSearchHouses(ev.target.value) 
   };
 
-  
+  // Renderizado condicional
+
+  if (loading) {
+    return <p>Cargando personajes...</p>;
+  }
+
+  if (filteredCharacters.length === 0 && searchCharacters !== "") {
+return (
+      <p>
+       No hay ningún personaje que coincida con la palabra {searchCharacters}
+      </p>
+    );
+  }
     
 
   return (
