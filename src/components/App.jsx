@@ -6,22 +6,49 @@ function App() {
 
   const [characters, setCharacters] = useState([]);
   const [searchCharacters, setSearchCharacters] = useState("");
-  const [searchHouse, setSearchHouse] = useState("gryffindor");
+  const [searchHouses, setSearchHouses] = useState("gryffindor");
   const [loading, setLoading] = useState(true);
 
   // useEffect
 
+  let urlHouses;
+if (urlHouses === "todas") {
+  urlHouses = "https://hp-api.onrender.com/api/characters/"
+} else {
+  urlHouses = `https://hp-api.onrender.com/api/characters/house/${searchHouses}`
+}
+
+
   useEffect(() => {
-    fetch("https://hp-api.onrender.com/api/characters/house/gryffindor")
+    fetch(urlHouses)
       .then((response) => response.json())
       .then((characters) => {
         setCharacters(characters);
         setLoading(false);
       })
       .catch((error) => console.error("Error:", error));
-  }, []);
+  }, [searchHouses]);
+
+  //Variables derivadas
+
+  const filteredCharacters = characters.filter((character) =>
+    character.name
+      .toLocaleLowerCase()
+      .includes(searchCharacters.toLocaleLowerCase())
+  );
+
+  // Funciones manejadoras
+
+  const handleSearch = (ev) => {
+    setSearchCharacters(ev.target.value) 
+  };
+
+    const handleSearchHouses = (ev) => {
+    setSearchHouses(ev.target.value) 
+  };
 
   
+    
 
   return (
     <div className="container">
@@ -47,7 +74,9 @@ function App() {
       <div className="search-section">
         <form>
           <label>Selecciona la casa:</label>
-          <select value={"gryffindor"} onChange={handleSearch}>
+            
+          <select value={searchHouses} onChange={handleSearchHouses}>
+            <option value="todas">Todas</option>
             <option value="gryffindor">Gryffindor</option>
             <option value="slytherin">Slytherin</option>
             <option value="hufflepuff">Hufflepuff</option>
