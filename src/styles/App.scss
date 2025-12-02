@@ -1,27 +1,73 @@
+// Variables
+$gray-bg: #808080;
+$dark-gray: #5a5a5a;
+$golden: #d4af37;
+$white: white;
+$dark-text: #333;
+$light-text: #555;
+$placeholder-color: #ccc;
+
+// Reset
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-}
-
+// Body
 body {
-  background-color: #555;
-  color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: $gray-bg;
+  color: $white;
+  padding: 20px;
 }
 
-.header {
-  border-bottom: solid 5px darkcyan;
+// Container
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  .title {
-    line-height: 4rem;
-    padding-inline: 2rem;
+// Logo
+.logo {
+  text-align: center;
+  margin-bottom: 40px;
+
+  img {
+    max-width: 400px;
+    width: 100%;
   }
 }
 
-.main {
-  padding: 2rem;
+// Search section
+.search-section {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+  align-items: center;
+
+  label {
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  input,
+  select {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    background-color: transparent;
+    border: 2px solid $golden;
+    color: $white;
+
+    &::placeholder {
+      color: $placeholder-color;
+    }
+
+    option {
+      background-color: $dark-gray;
+      color: $white;
+    }
+  }
 }
+

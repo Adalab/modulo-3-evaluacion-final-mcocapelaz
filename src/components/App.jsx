@@ -5,15 +5,6 @@ import {useState, useEffect} from "react";
 function App() {
 
 
-
-
-
-
-
-
-
-
-
 return (
     <div className="container">
       <div className="logo">
@@ -23,20 +14,19 @@ return (
         />
       </div>
 
-      <div className="search-section">
+      <form className="search-section">
         <label>Busca por personaje:</label>
         <input 
           type="text" 
-          value={searchTerm}
+          value={searchCharacters}
           onChange={handleSearch}
-          placeholder="h"
+          placeholder="Nombre del personaje"
         />
-      </div>
+      </form>
 
       <div className="search-section">
-        <label>Sselecciona la casa:</label>
-        <select value={selectedHouse} onChange={handleHouseChange}>
-          <option value="">Todas</option>
+        <label>Selecciona la casa:</label>
+        <select value={"gryffindor"}>
           <option value="gryffindor">Gryffindor</option>
           <option value="slytherin">Slytherin</option>
           <option value="hufflepuff">Hufflepuff</option>
@@ -45,9 +35,9 @@ return (
       </div>
 
       <div className="characters-grid">
-        {characters.map((character) => (
+        {/* {characters.map((character) => (
           <CharacterCard key={character.id} character={character} />
-        ))}
+        ))} */}
       </div>
     </div>
   );
