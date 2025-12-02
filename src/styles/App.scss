@@ -71,3 +71,39 @@ body {
   }
 }
 
+// Characters grid
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+// Character card
+.character-card {
+  background-color: $dark-gray;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+// Character info
+.character-info {
+  background-color: $golden;
+  padding: 15px;
+  color: $dark-text;
+
+  h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 16px;
+    color: $light-text;
+  }
+}
