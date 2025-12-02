@@ -1,6 +1,7 @@
 import "../styles/App.scss";
 import { useState, useEffect } from "react";
 
+
 function App() {
   // Variables de estado
 
@@ -11,23 +12,24 @@ function App() {
 
   // useEffect
 
-
-
-
   useEffect(() => {
-      let urlHouses;
-if (searchHouses === "todas") {
-  urlHouses = "https://hp-api.onrender.com/api/characters/"
-} else {
-  urlHouses = `https://hp-api.onrender.com/api/characters/house/${searchHouses}`
-}
+    setLoading(true);  
+    let urlHouses;
+    if (searchHouses === "todas") {
+      urlHouses = "https://hp-api.onrender.com/api/characters/"
+    } else {
+      urlHouses = `https://hp-api.onrender.com/api/characters/house/${searchHouses}`
+    }
     fetch(urlHouses)
       .then((response) => response.json())
       .then((characters) => {
         setCharacters(characters);
         setLoading(false);
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => {
+        console.error("Error:", error);
+        setLoading(false);  
+      });
   }, [searchHouses]);
 
   //Variables derivadas
@@ -44,7 +46,7 @@ if (searchHouses === "todas") {
     setSearchCharacters(ev.target.value) 
   };
 
-    const handleSearchHouses = (ev) => {
+  const handleSearchHouses = (ev) => {
     setSearchHouses(ev.target.value) 
   };
 
@@ -55,13 +57,12 @@ if (searchHouses === "todas") {
   }
 
   if (filteredCharacters.length === 0 && searchCharacters !== "") {
-return (
+    return (
       <p>
-       No hay ningún personaje que coincida con la palabra {searchCharacters}
+        No hay ningún personaje que coincida con la palabra {searchCharacters}
       </p>
     );
   }
-    
 
   return (
     <div className="container">
@@ -87,7 +88,6 @@ return (
       <div className="search-section">
         <form>
           <label>Selecciona la casa:</label>
-            
           <select value={searchHouses} onChange={handleSearchHouses}>
             <option value="todas">Todas</option>
             <option value="gryffindor">Gryffindor</option>
@@ -98,18 +98,21 @@ return (
         </form>
       </div>
 
- <div className="characters-grid">
-        <ul>
-          {filteredCharacters.map((character) => (
-            <li key={character.id}>
-              {character.name} {character.house}
-              <img src={character.image} alt={character.name} />
-            </li>
-          ))}
-        </ul>
+      <div className="characters-grid">
+        {filteredCharacters.map((character) => (
+          <div className="character-card" key={character.id}> 
+            <img src={character.image} alt={character.name} />
+            <div className="character-info">
+              <h3>{character.name}</h3>
+              <p>{character.house}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
 export default App;
+
+
