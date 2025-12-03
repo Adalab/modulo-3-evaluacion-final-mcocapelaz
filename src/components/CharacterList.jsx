@@ -1,20 +1,17 @@
-import goldenWizard from "../images/golden_wizard.jpg";
+import CharacterCard from "./CharacterCard";
 
 function CharacterList({ filteredCharacters }) {
   return (
-    <div>
+    
       <div className="characters-grid">
         {filteredCharacters.map((character) => (
-          <div className="character-card" key={character.id}>
-            <img src={character.image || goldenWizard} alt={character.name} />
-            <div className="character-info">
-              <h3>{character.name}</h3>
-              <p>{character.species}</p>
-            </div>
-          </div>
+          <CharacterCard 
+          key={character.id}
+          character={character}          
+          />           
         ))}
       </div>
-    </div>
+   
   );
 }
 export default CharacterList;

@@ -76,7 +76,9 @@ function App() {
       />
       <CharacterList 
       filteredCharacters={filteredCharacters} />
-      <CharacterCard />
+      <CharacterCard 
+      character={filteredCharacters}
+      />
     </div>
   );
 }
