@@ -7,7 +7,6 @@ import CharacterList from "./CharacterList";
 import CharacterCard from "./CharacterCard";
 import CharacterDetail from "./CharacterDetail";
 
-
 function App() {
   const [characters, setCharacters] = useState([]);
   const [searchCharacters, setSearchCharacters] = useState("");
@@ -56,6 +55,11 @@ function App() {
       </p>
     );
   }
+const handleReset = () => {
+    setSearchCharacters("");
+    setSearchHouses("gryffindor");
+  };
+
 
   return (
     <div className="container">
@@ -71,32 +75,26 @@ function App() {
         </div>
       </div>
 
-      <Filters
-        searchCharacters={searchCharacters}
-        handleSearch={handleSearch}
-        searchHouses={searchHouses}
-        handleSearchHouses={handleSearchHouses}
-      />
-      {/* AQUÍ VAN LAS ROUTES */}
       <Routes>
-        {/* Ruta principal - Listado */}
-        <Route 
-          path="/" 
+        <Route
+          path="/"
           element={
-            <CharacterList
-              filteredCharacters={filteredCharacters}
-            />
-          } 
+            <>
+              <Filters
+                searchCharacters={searchCharacters}
+                handleSearch={handleSearch}
+                searchHouses={searchHouses}
+                handleSearchHouses={handleSearchHouses}
+                handleReset={handleReset}
+              />
+              <CharacterList filteredCharacters={filteredCharacters} />
+            </>
+          }
         />
-        
-        {/* Ruta del detalle */}
-        <Route 
-          path="/character/:characterId" 
-          element={
-            <CharacterDetail 
-              characters={characters}
-            />
-          } 
+
+        <Route
+          path="/character/:characterId"
+          element={<CharacterDetail characters={characters} />}
         />
       </Routes>
     </div>

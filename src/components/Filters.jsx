@@ -1,6 +1,6 @@
 
 
-function Filters({searchCharacters, handleSearch, searchHouses, handleSearchHouses}) {
+function Filters({searchCharacters, handleSearch, searchHouses, handleSearchHouses, handleReset}) {
   return (
     <div> 
     <div className="search-section">
@@ -27,8 +27,11 @@ function Filters({searchCharacters, handleSearch, searchHouses, handleSearchHous
           </select>
         </form>
       </div>
+       <button className="back-button" onClick={handleReset}>Reset</button>
       </div>
   );
+
+
 }
 export default Filters;
 
