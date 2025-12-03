@@ -1,9 +1,12 @@
 import "../styles/App.scss";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import hogwartsCastle from "../images/hogwarts_castle.png";
 import Filters from "./Filters";
 import CharacterList from "./CharacterList";
 import CharacterCard from "./CharacterCard";
+import CharacterDetail from "./CharacterDetail";
+
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -74,8 +77,28 @@ function App() {
         searchHouses={searchHouses}
         handleSearchHouses={handleSearchHouses}
       />
-      <CharacterList 
-      filteredCharacters={filteredCharacters} />
+      {/* AQUÍ VAN LAS ROUTES */}
+      <Routes>
+        {/* Ruta principal - Listado */}
+        <Route 
+          path="/" 
+          element={
+            <CharacterList
+              filteredCharacters={filteredCharacters}
+            />
+          } 
+        />
+        
+        {/* Ruta del detalle */}
+        <Route 
+          path="/character/:characterId" 
+          element={
+            <CharacterDetail 
+              characters={characters}
+            />
+          } 
+        />
+      </Routes>
     </div>
   );
 }

@@ -137,10 +137,39 @@ body {
   max-width: 350px;
   margin: 0 auto;
   width: 100%;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   @media (max-width: 768px) {
     max-width: 280px;
   }
+
+  .back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: $golden;
+  color: $dark-text;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $golden, 10%;
+  }
+}
+
+.character-detail-container {
+  width: 100%;
+  max-width: 800px;
+}
 
   img {
     width: 100%;
