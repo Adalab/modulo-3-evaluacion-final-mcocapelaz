@@ -60,7 +60,7 @@ body {
 
 .search-section {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   margin-bottom: 10px;
 
@@ -70,17 +70,22 @@ body {
     align-items: center;
     width: 100%;
     max-width: 600px;
-    justify-content: center;
+   
 
     @media (max-width: 768px) {
       flex-direction: column;
-      gap: 10px;
+      gap: 10px;      
     }
   }
 
   label {
     font-size: 18px;
     white-space: nowrap;
+    margin-left: 30px;
+    min-width: 180px; 
+    text-align: right; 
+    padding-right: 10px;
+   
   }
 
   input,

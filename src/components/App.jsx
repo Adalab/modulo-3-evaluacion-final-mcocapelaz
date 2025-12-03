@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import hogwartsCastle from "../images/hogwarts_castle.png";
 import Filters from "./Filters";
 import CharacterList from "./CharacterList";
+import CharacterCard from "./CharacterCard";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -75,6 +76,7 @@ function App() {
       />
       <CharacterList 
       filteredCharacters={filteredCharacters} />
+      <CharacterCard />
     </div>
   );
 }
