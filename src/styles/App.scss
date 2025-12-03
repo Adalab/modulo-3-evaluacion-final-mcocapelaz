@@ -1,6 +1,11 @@
+// Importar fuente elegante de Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+// Variables
 $gray-bg: #808080;
 $dark-gray: #5a5a5a;
 $golden: #d4af37;
+$dark-golden: #91720d;
 $white: white;
 $dark-text: #333;
 $light-text: #555;
@@ -36,6 +41,7 @@ body {
   justify-content: center;
   margin-bottom: 20px;
   width: 100%;
+  
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 0px;
@@ -53,7 +59,7 @@ body {
     margin: 0 auto;
 
     @media (max-width: 768px) {
-      max-width: 90%; //
+      max-width: 90%;
     }
   }
 }
@@ -70,11 +76,10 @@ body {
     align-items: center;
     width: 100%;
     max-width: 600px;
-   
 
     @media (max-width: 768px) {
       flex-direction: column;
-      gap: 10px;      
+      gap: 10px;
     }
   }
 
@@ -82,10 +87,9 @@ body {
     font-size: 18px;
     white-space: nowrap;
     margin-left: 30px;
-    min-width: 180px; 
-    text-align: right; 
+    min-width: 180px;
+    text-align: right;
     padding-right: 10px;
-   
   }
 
   input,
@@ -118,21 +122,25 @@ body {
 .characters-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 30px;
   max-width: 900px;
   margin: 0 auto;
   width: 100%;
+  padding: 20px 0;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     max-width: 280px;
     padding: 0;
+    gap: 25px;
   }
 }
 
-// Character card
+// Character card - Crece y brilla sin saltar
 .character-card {
   background-color: $dark-gray;
+  border: 3px solid $golden;
+  border-radius: 8px;
   overflow: hidden;
   max-width: 350px;
   margin: 0 auto;
@@ -141,41 +149,32 @@ body {
   color: inherit;
   display: block;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 
   &:hover {
     transform: scale(1.05);
+    border-color: #e8c547;
+    box-shadow: 
+      0 0 20px rgba(212, 175, 55, 0.6),
+      0 0 40px rgba(212, 175, 55, 0.4),
+      0 8px 15px rgba(0, 0, 0, 0.3);
+    
+    .character-info {
+      background-color: #e0c44f;
+    }
   }
 
   @media (max-width: 768px) {
     max-width: 280px;
   }
 
-  .back-button {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  background-color: $golden;
-  color: $dark-text;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: $golden, 10%;
-  }
-}
-
-.character-detail-container {
-  width: 100%;
-  max-width: 800px;
-}
-
   img {
     width: 100%;
     height: 350px;
     object-fit: cover;
     display: block;
+    border-bottom: 2px solid $golden;
 
     @media (max-width: 768px) {
       height: 280px;
@@ -183,31 +182,190 @@ body {
   }
 }
 
-// Character info
+// Character info (listado)
 .character-info {
   background-color: $golden;
-  padding: 15px;
+  padding: 20px;
   color: $dark-text;
+  transition: background-color 0.3s ease;
 
   @media (max-width: 768px) {
-    padding: 12px;
+    padding: 15px;
   }
 
   h3 {
     font-size: 22px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    color: $dark-text;
+    font-weight: bold;
 
     @media (max-width: 768px) {
-      font-size: 16px;
+      font-size: 18px;
     }
   }
 
   p {
     font-size: 16px;
     color: $light-text;
+    margin: 0;
 
     @media (max-width: 768px) {
-      font-size: 13px;
+      font-size: 14px;
     }
+  }
+}
+
+// CHARACTER DETAIL - Contenedor más pequeño
+.character-detail-container {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  animation: fadeIn 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
+}
+
+// Animación de entrada
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Tarjeta de detalle - Más pequeña y equilibrada
+.character-detail {
+  background-color: transparent;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 25px;
+  width: 100%;
+  max-width: 400px;
+
+  img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    border: 3px solid $golden;
+    border-bottom: none;
+
+    @media (max-width: 768px) {
+      height: 260px;
+    }
+  }
+}
+
+// Info del detalle - Más compacto
+.character-detail-info {
+  background: linear-gradient(135deg, $golden 0%, #e0c44f 100%);
+  padding: 20px 15px;
+  color: #0a0a0a;
+  text-align: center;
+  border: 3px solid $golden;
+  border-top: none;
+
+  @media (max-width: 768px) {
+    padding: 18px 12px;
+  }
+
+  h2 {
+    font-size: 26px;
+    margin-bottom: 16px;
+    color: #5a4608;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #6d5609;
+    padding-bottom: 12px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 768px) {
+      font-size: 22px;
+      margin-bottom: 14px;
+      letter-spacing: 1.5px;
+    }
+  }
+
+  p {
+    font-size: 15px;
+    color: #0a0a0a;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    padding: 4px 8px;
+    font-family: 'Georgia', serif;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      margin-bottom: 8px;
+      padding: 3px 6px;
+      line-height: 1.4;
+    }
+
+    strong {
+      color: #4a3d06;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 3px;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      @media (max-width: 768px) {
+        font-size: 12px;
+        margin-bottom: 2px;
+      }
+    }
+  }
+}
+
+// Botón de volver
+.back-button {
+  display: block;
+  width: fit-content;
+  margin: 20px auto 30px auto;
+  padding: 12px 35px;
+  background: linear-gradient(135deg, $golden 0%, #dfc04a 100%);
+  color: $dark-text;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+  border: none;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 1px;
+
+  &:hover {
+    background: linear-gradient(135deg, #dfc04a 0%, #e8c547 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+  }
+
+  &:active {
+    transform: translateY(0) scale(1);
   }
 }
