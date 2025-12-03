@@ -1,8 +1,8 @@
 import "../styles/App.scss";
 import { useState, useEffect } from "react";
 import hogwartsCastle from "../images/hogwarts_castle.png";
-import goldenWizard from "../images/golden_wizard.jpg";
 import Filters from "./Filters";
+import CharacterList from "./CharacterList";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -67,19 +67,14 @@ function App() {
         </div>
       </div>
 
-      <Filters />
-
-      <div className="characters-grid">
-        {filteredCharacters.map((character) => (
-          <div className="character-card" key={character.id}>
-            <img src={character.image || goldenWizard} alt={character.name} />
-            <div className="character-info">
-              <h3>{character.name}</h3>
-              <p>{character.species}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Filters
+        searchCharacters={searchCharacters}
+        handleSearch={handleSearch}
+        searchHouses={searchHouses}
+        handleSearchHouses={handleSearchHouses}
+      />
+      <CharacterList 
+      filteredCharacters={filteredCharacters} />
     </div>
   );
 }
