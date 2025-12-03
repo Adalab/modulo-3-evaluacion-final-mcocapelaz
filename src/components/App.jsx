@@ -10,7 +10,6 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     let urlHouses;
     if (searchHouses === "todas") {
       urlHouses = "https://hp-api.onrender.com/api/characters/";
@@ -30,9 +29,7 @@ function App() {
   }, [searchHouses]);
 
   const filteredCharacters = characters.filter((character) =>
-    character.name
-      .toLowerCase()
-      .includes(searchCharacters.toLowerCase())
+    character.name.toLowerCase().includes(searchCharacters.toLowerCase())
   );
 
   const handleSearch = (ev) => {
@@ -58,15 +55,15 @@ function App() {
   return (
     <div className="container">
       <div className="logos-container">
-      <div className="logo">
-        <img src={hogwartsCastle} alt="Hogwarts Castle" />
-      </div>
-      <div className="logo">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Harry_Potter_wordmark.svg"
-          alt="Harry Potter"
-        />
-      </div>
+        <div className="logo">
+          <img src={hogwartsCastle} alt="Hogwarts Castle" />
+        </div>
+        <div className="logo">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Harry_Potter_wordmark.svg"
+            alt="Harry Potter"
+          />
+        </div>
       </div>
 
       <div className="search-section">
@@ -97,10 +94,7 @@ function App() {
       <div className="characters-grid">
         {filteredCharacters.map((character) => (
           <div className="character-card" key={character.id}>
-            <img
-              src={character.image || goldenWizard}
-              alt={character.name}
-            />
+            <img src={character.image || goldenWizard} alt={character.name} />
             <div className="character-info">
               <h3>{character.name}</h3>
               <p>{character.species}</p>
