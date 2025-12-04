@@ -1,6 +1,6 @@
 # Harry Potter Character Finder
 
-Enlace en Git Pages: 
+Enlace en Git Pages: https://beta.adalab.es/modulo-3-evaluacion-final-mcocapelaz/
 
 Este proyecto pertenece a la evaluación final del módulo sobre React del bootcamp de programación web de Adalab. 
 Se trata de una aplicación web que permite buscar y filtrar personajes del universo de Harry Potter por nombre, casa y género.
