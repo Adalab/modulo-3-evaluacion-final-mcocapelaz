@@ -1,34 +1,38 @@
-
-function Filters({searchCharacters, searchHouses, searchGender, setSearchCharacters, setSearchHouses, setSearchGender, handleReset}) {
-
+function Filters({
+  searchCharacters,
+  searchHouses,
+  searchGender,
+  setSearchCharacters,
+  setSearchHouses,
+  setSearchGender,
+  handleReset,
+}) {
   const handleSearch = (ev) => {
-    setSearchCharacters(ev.target.value);    
+    setSearchCharacters(ev.target.value);
   };
 
-   const handleSearchHouses = (ev) => {
+  const handleSearchHouses = (ev) => {
     setSearchHouses(ev.target.value);
   };
 
-   const handleSearchGender = (ev) => {
+  const handleSearchGender = (ev) => {
     setSearchGender(ev.target.value);
   };
 
-    const handleSubmit= (ev)=> { 
-   ev.preventDefault();
-   };
-
-
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+  };
 
   return (
-    <div> 
-    <div className="search-section">
+    <div>
+      <div className="search-section">
         <form onSubmit={handleSubmit}>
           <label>Busca por personaje:</label>
           <input
             type="text"
             value={searchCharacters}
             onChange={handleSearch}
-            placeholder="Nombre del personaje"            
+            placeholder="Nombre del personaje"
           />
         </form>
       </div>
@@ -49,23 +53,18 @@ function Filters({searchCharacters, searchHouses, searchGender, setSearchCharact
         <form onSubmit={handleSubmit}>
           <label>Selecciona el género:</label>
           <select value={searchGender} onChange={handleSearchGender}>
-             <option value="all">Todos</option> 
-            <option value="female">Femenino</option>   
-            <option value="male">Masculino</option>                     
+            <option value="all">Todos</option>
+            <option value="female">Femenino</option>
+            <option value="male">Masculino</option>
           </select>
         </form>
       </div>
       {searchCharacters && (
-    <button className="back-button" onClick={handleReset}>
-      Reset
-    </button>
-  )}
-      </div>
+        <button className="back-button" onClick={handleReset}>
+          Reset
+        </button>
+      )}
+    </div>
   );
-
-
 }
 export default Filters;
-
-
-

@@ -1,9 +1,8 @@
-
 import hogwartsCastle from "../../images/hogwarts_castle.png";
 
 function Header() {
-  return (   
-      <div className="container">
+  return (
+    <div className="container">
       <div className="logos-container">
         <div className="logo">
           <img src={hogwartsCastle} alt="Hogwarts Castle" />

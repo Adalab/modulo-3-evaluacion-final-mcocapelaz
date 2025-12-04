@@ -1,7 +1,5 @@
-// Importar fuente elegante de Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap");
 
-// Variables
 $gray-bg: #808080;
 $dark-gray: #5a5a5a;
 $golden: #d4af37;
@@ -41,7 +39,7 @@ body {
   justify-content: center;
   margin-bottom: 20px;
   width: 100%;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 0px;
@@ -66,21 +64,20 @@ body {
 
 .search-section {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   width: 100%;
   margin-bottom: 20px;
 
   form {
     display: flex;
     gap: 30px;
-    align-items: center;   
+    align-items: center;
     width: 100%;
     max-width: 600px;
-    
 
     @media (max-width: 768px) {
       flex-direction: column;
-      gap: 10px;     
+      gap: 10px;
     }
   }
 
@@ -88,9 +85,9 @@ body {
     font-size: 18px;
     white-space: nowrap;
     margin-left: 0;
-    min-width: 180px; 
-    text-align: right; 
-    padding-right: 10px; 
+    min-width: 180px;
+    text-align: right;
+    padding-right: 10px;
   }
 
   input,
@@ -119,7 +116,6 @@ body {
   }
 }
 
-// Characters grid
 .characters-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -155,11 +151,9 @@ body {
   &:hover {
     transform: scale(1.05);
     border-color: #e8c547;
-    box-shadow: 
-      0 0 20px rgba(212, 175, 55, 0.6),
-      0 0 40px rgba(212, 175, 55, 0.4),
-      0 8px 15px rgba(0, 0, 0, 0.3);
-    
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6),
+      0 0 40px rgba(212, 175, 55, 0.4), 0 8px 15px rgba(0, 0, 0, 0.3);
+
     .character-info {
       background-color: #e0c44f;
     }
@@ -183,35 +177,32 @@ body {
 }
 
 .warning-container {
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  align-items:center; 
+  align-items: center;
 }
 
 .warning {
   text-align: center;
-background-color: $dark-gray;
+  background-color: $dark-gray;
   border: 3px solid $golden;
   color: $golden;
   border-radius: 10px;
   max-width: 550px;
-  padding: 10px;  
-  margin-bottom: 50px; 
-  width: 100%;    
+  padding: 10px;
+  margin-bottom: 50px;
+  width: 100%;
   transition: all 0.4s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 
   &:hover {
     transform: scale(1.05);
     border-color: #e8c547;
-    box-shadow: 
-      0 0 20px rgba(212, 175, 55, 0.6),
-      0 0 40px rgba(212, 175, 55, 0.4),
-      0 8px 15px rgba(0, 0, 0, 0.3);
-}
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6),
+      0 0 40px rgba(212, 175, 55, 0.4), 0 8px 15px rgba(0, 0, 0, 0.3);
+  }
 }
 
-// Character info (listado)
 .character-info {
   background-color: $golden;
   padding: 20px;
@@ -244,7 +235,6 @@ background-color: $dark-gray;
   }
 }
 
-// CHARACTER DETAIL - Contenedor más pequeño
 .character-detail-container {
   width: 100%;
   max-width: 450px;
@@ -253,13 +243,12 @@ background-color: $dark-gray;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   @media (max-width: 768px) {
     max-width: 90%;
   }
 }
 
-// Animación de entrada
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -271,7 +260,6 @@ background-color: $dark-gray;
   }
 }
 
-// Tarjeta de detalle - Más pequeña y equilibrada
 .character-detail {
   background-color: transparent;
   border: none;
@@ -296,7 +284,6 @@ background-color: $dark-gray;
   }
 }
 
-// Info del detalle - Más compacto
 .character-detail-info {
   background: linear-gradient(135deg, $golden 0%, #e0c44f 100%);
   padding: 20px 15px;
@@ -315,7 +302,7 @@ background-color: $dark-gray;
     color: #5a4608;
     font-weight: 700;
     text-align: center;
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     letter-spacing: 2px;
     text-transform: uppercase;
     border-bottom: 2px solid #6d5609;
@@ -335,7 +322,7 @@ background-color: $dark-gray;
     margin-bottom: 10px;
     line-height: 1.5;
     padding: 4px 8px;
-    font-family: 'Georgia', serif;
+    font-family: "Georgia", serif;
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
@@ -356,7 +343,7 @@ background-color: $dark-gray;
       font-weight: bold;
       display: block;
       margin-bottom: 3px;
-      font-family: 'Cinzel', serif;
+      font-family: "Cinzel", serif;
       font-size: 13px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -369,7 +356,6 @@ background-color: $dark-gray;
   }
 }
 
-// Botón de volver
 .back-button {
   display: block;
   width: fit-content;
@@ -385,7 +371,7 @@ background-color: $dark-gray;
   box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
   border: none;
   text-align: center;
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
   letter-spacing: 1px;
 
   &:hover {

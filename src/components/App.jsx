@@ -32,12 +32,11 @@ function App() {
       });
   }, [searchHouses]);
 
-      const handleReset = () => {
+  const handleReset = () => {
     setSearchCharacters("");
     setSearchHouses("gryffindor");
     setSearchGender("all");
   };
-
 
   const filteredCharacters = characters.filter((character) => {
     let nameFilter =
@@ -59,18 +58,20 @@ function App() {
 
   if (filteredCharacters.length === 0 && searchCharacters.length >= 3) {
     return (
-      <div className="warning-container"> 
+      <div className="warning-container">
         <Header />
-      <p className="warning">
-       Ningún hechizo te ayudará a encontrar un personaje que coincida con el nombre {searchCharacters} y con el género {searchGender} en la casa {searchHouses}.
-       ¿Quieres probar de nuevo? 🪄🌟
-      </p>
-      <button className= "back-button" onClick={handleReset}>Reset</button>
+        <p className="warning">
+          Ningún hechizo te ayudará a encontrar un personaje que coincida con el
+          nombre {searchCharacters} y con el género {searchGender} en la casa{" "}
+          {searchHouses}. ¿Quieres probar de nuevo? 🪄🌟
+        </p>
+        <button className="back-button" onClick={handleReset}>
+          Reset
+        </button>
       </div>
     );
   }
 
-  
   return (
     <>
       <Header />
@@ -86,8 +87,8 @@ function App() {
                 setSearchCharacters={setSearchCharacters}
                 setSearchHouses={setSearchHouses}
                 searchGender={searchGender}
-                setSearchGender={setSearchGender}  
-                handleReset={handleReset}              
+                setSearchGender={setSearchGender}
+                handleReset={handleReset}
               />
               <CharacterList filteredCharacters={filteredCharacters} />
             </>
