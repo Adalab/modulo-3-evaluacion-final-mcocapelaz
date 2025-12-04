@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Filters from "./filters/Filters";
 import CharacterList from "./characters/CharacterList";
-
 import CharacterDetail from "./characters/CharacterDetail";
 import Header from "./layout/Header";
 
@@ -37,10 +36,10 @@ function App() {
   );
 
   const handleSearch = (ev) => {
-    setSearchCharacters(ev.target.value);
+    setSearchCharacters(ev.target.value);    
   };
 
-  const handleSearchHouses = (ev) => {
+   const handleSearchHouses = (ev) => {
     setSearchHouses(ev.target.value);
   };
 
