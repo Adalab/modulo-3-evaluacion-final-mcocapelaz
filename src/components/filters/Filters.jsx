@@ -1,5 +1,5 @@
 
-function Filters({searchCharacters, searchHouses, searchGender, setSearchCharacters, setSearchHouses, setSearchGender}) {
+function Filters({searchCharacters, searchHouses, searchGender, setSearchCharacters, setSearchHouses, setSearchGender, handleReset}) {
 
   const handleSearch = (ev) => {
     setSearchCharacters(ev.target.value);    
@@ -17,11 +17,7 @@ function Filters({searchCharacters, searchHouses, searchGender, setSearchCharact
    ev.preventDefault();
    };
 
-    const handleReset = () => {
-    setSearchCharacters("");
-    setSearchHouses("gryffindor");
-    setSearchGender("all");
-  };
+
 
   return (
     <div> 

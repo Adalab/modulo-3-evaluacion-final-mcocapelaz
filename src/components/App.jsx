@@ -12,7 +12,7 @@ function App() {
   const [searchHouses, setSearchHouses] = useState("gryffindor");
   const [searchGender, setSearchGender] = useState("all");
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     let urlHouses;
     if (searchHouses === "todas") {
@@ -32,28 +32,26 @@ function App() {
       });
   }, [searchHouses]);
 
+      const handleReset = () => {
+    setSearchCharacters("");
+    setSearchHouses("gryffindor");
+    setSearchGender("all");
+  };
+
+
   const filteredCharacters = characters.filter((character) => {
-   let nameFilter=
-        searchCharacters.length < 3
-           
-          ?true 
+    let nameFilter =
+      searchCharacters.length < 3
+        ? true
         : character.name
-      .toLocaleLowerCase()
-      .includes(searchCharacters.toLocaleLowerCase());   
-    
-    let genderFilter= 
-      searchGender=== "all"
-    ? true 
-      : character.gender === searchGender;
-  
-     return nameFilter && genderFilter;
-});
-    
-     
-   
-  
+            .toLocaleLowerCase()
+            .includes(searchCharacters.toLocaleLowerCase());
 
+    let genderFilter =
+      searchGender === "all" ? true : character.gender === searchGender;
 
+    return nameFilter && genderFilter;
+  });
 
   if (loading) {
     return <p>Cargando personajes...</p>;
@@ -61,15 +59,18 @@ function App() {
 
   if (filteredCharacters.length === 0 && searchCharacters.length >= 3) {
     return (
-     
-      <p>
-        No hay ningún personaje que coincida con la palabra {searchCharacters}        
+      <div className="warning-container"> 
+        <Header />
+      <p className="warning">
+       Ningún hechizo te ayudará a encontrar un personaje que coincida con el nombre {searchCharacters} y con el género {searchGender} en la casa {searchHouses}.
+       ¿Quieres probar de nuevo? 🪄🌟
       </p>
-      
+      <button className= "back-button" onClick={handleReset}>Reset</button>
+      </div>
     );
   }
-  
 
+  
   return (
     <>
       <Header />
@@ -85,7 +86,8 @@ function App() {
                 setSearchCharacters={setSearchCharacters}
                 setSearchHouses={setSearchHouses}
                 searchGender={searchGender}
-                setSearchGender={setSearchGender}
+                setSearchGender={setSearchGender}  
+                handleReset={handleReset}              
               />
               <CharacterList filteredCharacters={filteredCharacters} />
             </>
@@ -100,6 +102,5 @@ function App() {
     </>
   );
 }
-
 
 export default App;
