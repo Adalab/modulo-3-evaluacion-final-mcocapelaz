@@ -1,11 +1,11 @@
 import "../styles/App.scss";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import hogwartsCastle from "../images/hogwarts_castle.png";
-import Filters from "./Filters";
-import CharacterList from "./CharacterList";
-import CharacterCard from "./CharacterCard";
-import CharacterDetail from "./CharacterDetail";
+import Filters from "./filters/Filters";
+import CharacterList from "./characters/CharacterList";
+
+import CharacterDetail from "./characters/CharacterDetail";
+import Header from "./layout/Header";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -62,18 +62,8 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <div className="logos-container">
-        <div className="logo">
-          <img src={hogwartsCastle} alt="Hogwarts Castle" />
-        </div>
-        <div className="logo">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Harry_Potter_wordmark.svg"
-            alt="Harry Potter"
-          />
-        </div>
-      </div>
+    <>
+      <Header />
 
       <Routes>
         <Route
@@ -97,7 +87,7 @@ function App() {
           element={<CharacterDetail characters={characters} />}
         />
       </Routes>
-    </div>
+    </>
   );
 }
 

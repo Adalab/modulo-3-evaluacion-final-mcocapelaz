@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import goldenWizard from "../images/golden_wizard.jpg";
+import goldenWizard from "../../images/golden_wizard.jpg";
 
 function CharacterDetail({ characters }) {
   const { characterId } = useParams();

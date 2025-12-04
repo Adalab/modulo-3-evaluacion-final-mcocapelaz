@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import goldenWizard from "../images/golden_wizard.jpg";
+import goldenWizard from "../../images/golden_wizard.jpg";
 
 function CharacterCard({ character }) {
   return (
