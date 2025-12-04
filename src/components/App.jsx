@@ -10,8 +10,9 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [searchCharacters, setSearchCharacters] = useState("");
   const [searchHouses, setSearchHouses] = useState("gryffindor");
+  const [searchGender, setSearchGender] = useState("all");
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     let urlHouses;
     if (searchHouses === "todas") {
@@ -31,31 +32,43 @@ function App() {
       });
   }, [searchHouses]);
 
-  const filteredCharacters = characters.filter((character) => { 
+  const filteredCharacters = characters.filter((character) => {
+   let nameFilter=
+        searchCharacters.length < 3
+           
+          ?true 
+        : character.name
+      .toLocaleLowerCase()
+      .includes(searchCharacters.toLocaleLowerCase());   
+    
+    let genderFilter= 
+      searchGender=== "all"
+    ? true 
+      : character.gender === searchGender;
   
-  if (searchCharacters.length < 3) {
-    return true;
-  }
-  return character.name
-  .toLowerCase()
-  .includes(searchCharacters.toLowerCase());
-  });
+     return nameFilter && genderFilter;
+});
+    
+     
+   
   
+
+
+
   if (loading) {
     return <p>Cargando personajes...</p>;
   }
 
   if (filteredCharacters.length === 0 && searchCharacters.length >= 3) {
     return (
+     
       <p>
-        No hay ningún personaje que coincida con la palabra {searchCharacters}
+        No hay ningún personaje que coincida con la palabra {searchCharacters}        
       </p>
       
     );
   }
-
-   
- 
+  
 
   return (
     <>
@@ -68,14 +81,11 @@ function App() {
             <>
               <Filters
                 searchCharacters={searchCharacters}
-                handleSearch
                 searchHouses={searchHouses}
-                handleSearchHouses
-                handleReset
                 setSearchCharacters={setSearchCharacters}
                 setSearchHouses={setSearchHouses}
-                filteredCharacters
-                loading={loading}                
+                searchGender={searchGender}
+                setSearchGender={setSearchGender}
               />
               <CharacterList filteredCharacters={filteredCharacters} />
             </>
@@ -90,5 +100,6 @@ function App() {
     </>
   );
 }
+
 
 export default App;

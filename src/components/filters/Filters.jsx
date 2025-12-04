@@ -1,5 +1,5 @@
 
-function Filters({searchCharacters, searchHouses, setSearchCharacters, setSearchHouses }) {
+function Filters({searchCharacters, searchHouses, searchGender, setSearchCharacters, setSearchHouses, setSearchGender}) {
 
   const handleSearch = (ev) => {
     setSearchCharacters(ev.target.value);    
@@ -9,6 +9,10 @@ function Filters({searchCharacters, searchHouses, setSearchCharacters, setSearch
     setSearchHouses(ev.target.value);
   };
 
+   const handleSearchGender = (ev) => {
+    setSearchGender(ev.target.value);
+  };
+
     const handleSubmit= (ev)=> { 
    ev.preventDefault();
    };
@@ -16,6 +20,7 @@ function Filters({searchCharacters, searchHouses, setSearchCharacters, setSearch
     const handleReset = () => {
     setSearchCharacters("");
     setSearchHouses("gryffindor");
+    setSearchGender("all");
   };
 
   return (
@@ -41,6 +46,16 @@ function Filters({searchCharacters, searchHouses, setSearchCharacters, setSearch
             <option value="slytherin">Slytherin</option>
             <option value="hufflepuff">Hufflepuff</option>
             <option value="ravenclaw">Ravenclaw</option>
+          </select>
+        </form>
+      </div>
+      <div className="search-section">
+        <form onSubmit={handleSubmit}>
+          <label>Selecciona el género:</label>
+          <select value={searchGender} onChange={handleSearchGender}>
+             <option value="all">Todos</option> 
+            <option value="female">Femenino</option>   
+            <option value="male">Masculino</option>                     
           </select>
         </form>
       </div>
