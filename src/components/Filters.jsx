@@ -27,7 +27,7 @@ function Filters({searchCharacters, handleSearch, searchHouses, handleSearchHous
           </select>
         </form>
       </div>
-       <button className="back-button" onClick={handleReset}>Reset</button>
+      {searchCharacters && <button className="back-button" onClick={handleReset}>Reset</button>}
       </div>
   );
 

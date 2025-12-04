@@ -44,6 +44,11 @@ function App() {
     setSearchHouses(ev.target.value);
   };
 
+  const handleReset = () => {
+    setSearchCharacters("");
+    setSearchHouses("gryffindor");
+  };
+
   if (loading) {
     return <p>Cargando personajes...</p>;
   }
@@ -55,11 +60,6 @@ function App() {
       </p>
     );
   }
-const handleReset = () => {
-    setSearchCharacters("");
-    setSearchHouses("gryffindor");
-  };
-
 
   return (
     <div className="container">
