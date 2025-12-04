@@ -28,6 +28,7 @@ Se trata de una aplicación web que permite buscar y filtrar personajes del univ
 3. Selecciona el género para filtrar personajes masculinos, femeninos o todos.
 4. Usa el botón Reset para limpiar todos los filtros y volver al estado inicial).
 
+Autora: Mónica Coca 
 
 
 
