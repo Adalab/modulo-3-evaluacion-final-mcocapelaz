@@ -31,9 +31,31 @@ function App() {
       });
   }, [searchHouses]);
 
-  const filteredCharacters = characters.filter((character) =>
-    character.name.toLowerCase().includes(searchCharacters.toLowerCase())
-  );
+  const filteredCharacters = characters.filter((character) => { 
+  
+  if (searchCharacters.length < 3) {
+    return true;
+  }
+  return character.name
+  .toLowerCase()
+  .includes(searchCharacters.toLowerCase());
+  });
+  
+  if (loading) {
+    return <p>Cargando personajes...</p>;
+  }
+
+  if (filteredCharacters.length === 0 && searchCharacters.length >= 3) {
+    return (
+      <p>
+        No hay ningún personaje que coincida con la palabra {searchCharacters}
+      </p>
+      
+    );
+  }
+
+   
+ 
 
   return (
     <>
@@ -53,7 +75,7 @@ function App() {
                 setSearchCharacters={setSearchCharacters}
                 setSearchHouses={setSearchHouses}
                 filteredCharacters
-                loading={loading}
+                loading={loading}                
               />
               <CharacterList filteredCharacters={filteredCharacters} />
             </>

@@ -26,7 +26,6 @@ function CharacterDetail({ characters }) {
           <p><strong>Nombres alternativos:</strong> {Array.isArray(character.alternate_names) && character.alternate_names.length > 0 ? character.alternate_names.join(", ") : "Ninguno"}</p>
         </div>
       </div>
-
       <Link to="/" className="back-button">← VOLVER</Link>
     </div>
   );

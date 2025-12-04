@@ -1,6 +1,5 @@
 
-
-function Filters({searchCharacters, searchHouses, setSearchCharacters, setSearchHouses, filteredCharacters, loading }) {
+function Filters({searchCharacters, searchHouses, setSearchCharacters, setSearchHouses }) {
 
   const handleSearch = (ev) => {
     setSearchCharacters(ev.target.value);    
@@ -10,26 +9,14 @@ function Filters({searchCharacters, searchHouses, setSearchCharacters, setSearch
     setSearchHouses(ev.target.value);
   };
 
-  const handleReset = () => {
+    const handleSubmit= (ev)=> { 
+   ev.preventDefault();
+   };
+
+    const handleReset = () => {
     setSearchCharacters("");
     setSearchHouses("gryffindor");
   };
-
-  if (loading) {
-    return <p>Cargando personajes...</p>;
-  }
-
-  if (filteredCharacters.length === 0 && searchCharacters !== "") {
-    return (
-      <p>
-        No hay ningún personaje que coincida con la palabra {searchCharacters}
-      </p>
-    );
-  }
-
-   const handleSubmit= (ev)=> { 
-   ev.preventDefault();
-   };
 
   return (
     <div> 
@@ -57,7 +44,11 @@ function Filters({searchCharacters, searchHouses, setSearchCharacters, setSearch
           </select>
         </form>
       </div>
-      {searchCharacters && <button className="back-button" onClick={handleReset}>Reset</button>}
+      {searchCharacters && (
+    <button className="back-button" onClick={handleReset}>
+      Reset
+    </button>
+  )}
       </div>
   );
 
