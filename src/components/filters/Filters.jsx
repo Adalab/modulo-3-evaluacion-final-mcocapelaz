@@ -1,6 +1,31 @@
 
 
-function Filters({searchCharacters, handleSearch, searchHouses, handleSearchHouses, handleReset}) {
+function Filters({searchCharacters, searchHouses, setSearchCharacters, setSearchHouses, filteredCharacters, loading }) {
+
+  const handleSearch = (ev) => {
+    setSearchCharacters(ev.target.value);    
+  };
+
+   const handleSearchHouses = (ev) => {
+    setSearchHouses(ev.target.value);
+  };
+
+  const handleReset = () => {
+    setSearchCharacters("");
+    setSearchHouses("gryffindor");
+  };
+
+  if (loading) {
+    return <p>Cargando personajes...</p>;
+  }
+
+  if (filteredCharacters.length === 0 && searchCharacters !== "") {
+    return (
+      <p>
+        No hay ningún personaje que coincida con la palabra {searchCharacters}
+      </p>
+    );
+  }
 
    const handleSubmit= (ev)=> { 
    ev.preventDefault();

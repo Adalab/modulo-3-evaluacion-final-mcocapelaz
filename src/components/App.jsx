@@ -35,31 +35,6 @@ function App() {
     character.name.toLowerCase().includes(searchCharacters.toLowerCase())
   );
 
-  const handleSearch = (ev) => {
-    setSearchCharacters(ev.target.value);    
-  };
-
-   const handleSearchHouses = (ev) => {
-    setSearchHouses(ev.target.value);
-  };
-
-  const handleReset = () => {
-    setSearchCharacters("");
-    setSearchHouses("gryffindor");
-  };
-
-  if (loading) {
-    return <p>Cargando personajes...</p>;
-  }
-
-  if (filteredCharacters.length === 0 && searchCharacters !== "") {
-    return (
-      <p>
-        No hay ningún personaje que coincida con la palabra {searchCharacters}
-      </p>
-    );
-  }
-
   return (
     <>
       <Header />
@@ -71,10 +46,14 @@ function App() {
             <>
               <Filters
                 searchCharacters={searchCharacters}
-                handleSearch={handleSearch}
+                handleSearch
                 searchHouses={searchHouses}
-                handleSearchHouses={handleSearchHouses}
-                handleReset={handleReset}
+                handleSearchHouses
+                handleReset
+                setSearchCharacters={setSearchCharacters}
+                setSearchHouses={setSearchHouses}
+                filteredCharacters
+                loading={loading}
               />
               <CharacterList filteredCharacters={filteredCharacters} />
             </>
